@@ -12,8 +12,18 @@
 			$email = $_GET["email"];
 			$pass = $_GET["pass"];
 
-			$result = mysqli_query($mysqli,"INSERT INTO dummy_table(Email, Password) VALUES('$email','$pass')");
-			echo "DATA ADDED Successfully";
+			$result = $mysqli->prepare("INSERT INTO dummy_table(Email, Password) VALUES(?,?)")
+			$result->bind_param("is",$email, $name)
+			// $result = mysqli_query($mysqli,"INSERT INTO dummy_table(Email, Password) VALUES('$email','$pass')");
+			if (!$result)
+			{
+				echo "ERROR in insertion";
+				$mysqli->close();
+			}
+			else {
+				echo "DATA inserted Successfully"
+				$mysqli->close();
+			}
 		}
 
 
