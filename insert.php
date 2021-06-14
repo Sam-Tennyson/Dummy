@@ -7,10 +7,10 @@
 	<?php
 
 		include_once("config.php");
-		if (isset($_POST['holder']))
+		if (isset($_GET['holder']))
 		{
-			$email = $_POST["email"];
-			$pass = $_POST["pass"];
+			$email = $_GET["email"];
+			$pass = $_GET["pass"];
 
 			$result = mysqli_query($mysqli,"INSERT INTO dummy_table(Email, Password) VALUES('$email','$pass')");
 			echo "DATA ADDED Successfully";
